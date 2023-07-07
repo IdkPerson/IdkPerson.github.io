@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <script>
-    function ProjectsFunc() {
-        open("https://idkperson.github.io/")
-    }
+    var cdd = new Date("Jul 8, 2023 12:00:00").getTime();
 
-    function fortnitePortFalse() {
-        open("https://www.youtube.com/watch?v=4w2icYjruEY/")
-    }
+    var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = cdd - now;
 
-    function fortnitePort() {
-        open("https://www.IdkPerson.github.io/FortnitePort/")
-    }
+        var d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = d + "d " + h + "h " + m + "m " + s + "s ";
+
+        if (distance < 0)
+        {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "update should show up in a few seconds";
+        }
+    }, 1000)
 </script>
 
 <body style="text-align: center;word-wrap: normal;">
     <title>IdkPerson</title>
     <h1>IdkPerson</h1>
     <p>My website for hosting some stuff.</p>
-    <input type="button" onclick="ProjectsFunc()" value="Reload Page">
-    <button onclick="fortnitePort()">Fortnite Online</button>
-    <button onclick="fornitePortFalse()">Fortnite Port v2</button>
+    <p id="countdown"></p>
 </body>
